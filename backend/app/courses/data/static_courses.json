@@ -1,0 +1,76 @@
+{
+  "typescript": [
+    { "title": "TypeScript Course for Beginners", "channel": "Academind", "durationMinutes": 180, "url": "https://www.youtube.com/watch?v=BwuLxPH8IDs", "thumbnail": "https://i.ytimg.com/vi/BwuLxPH8IDs/mqdefault.jpg" },
+    { "title": "Learn TypeScript - Full Tutorial", "channel": "freeCodeCamp.org", "durationMinutes": 320, "url": "https://www.youtube.com/watch?v=30LWjhZzg50", "thumbnail": "https://i.ytimg.com/vi/30LWjhZzg50/mqdefault.jpg" },
+    { "title": "TypeScript in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=zQnBQ4tB3ZA", "thumbnail": "https://i.ytimg.com/vi/zQnBQ4tB3ZA/mqdefault.jpg" }
+  ],
+  "nextjs": [
+    { "title": "Next.js App Router Course", "channel": "freeCodeCamp.org", "durationMinutes": 240, "url": "https://www.youtube.com/watch?v=wm5gMKuwSYk", "thumbnail": "https://i.ytimg.com/vi/wm5gMKuwSYk/mqdefault.jpg" },
+    { "title": "Next.js 14 Tutorial", "channel": "The Net Ninja", "durationMinutes": 180, "url": "https://www.youtube.com/watch?v=__mSgDEOyv8", "thumbnail": "https://i.ytimg.com/vi/__mSgDEOyv8/mqdefault.jpg" },
+    { "title": "Next.js in 100 Seconds", "channel": "Fireship", "durationMinutes": 3, "url": "https://www.youtube.com/watch?v=Sklc_fQBmcs", "thumbnail": "https://i.ytimg.com/vi/Sklc_fQBmcs/mqdefault.jpg" }
+  ],
+  "nodejs": [
+    { "title": "Node.js Tutorial for Beginners", "channel": "Programming with Mosh", "durationMinutes": 60, "url": "https://www.youtube.com/watch?v=TlB_eWDSMt4", "thumbnail": "https://i.ytimg.com/vi/TlB_eWDSMt4/mqdefault.jpg" },
+    { "title": "Node.js Full Course", "channel": "freeCodeCamp.org", "durationMinutes": 480, "url": "https://www.youtube.com/watch?v=Oe421EPjeBE", "thumbnail": "https://i.ytimg.com/vi/Oe421EPjeBE/mqdefault.jpg" },
+    { "title": "Node.js in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=ENrzD9HAZK4", "thumbnail": "https://i.ytimg.com/vi/ENrzD9HAZK4/mqdefault.jpg" }
+  ],
+  "postgresql": [
+    { "title": "PostgreSQL Crash Course", "channel": "Traversy Media", "durationMinutes": 80, "url": "https://www.youtube.com/watch?v=qw--VYLpxG4", "thumbnail": "https://i.ytimg.com/vi/qw--VYLpxG4/mqdefault.jpg" },
+    { "title": "PostgreSQL Full Course", "channel": "freeCodeCamp.org", "durationMinutes": 240, "url": "https://www.youtube.com/watch?v=qw--VYLpxG4", "thumbnail": "https://i.ytimg.com/vi/qw--VYLpxG4/mqdefault.jpg" },
+    { "title": "Postgres in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=n2Fluyr3lbc", "thumbnail": "https://i.ytimg.com/vi/n2Fluyr3lbc/mqdefault.jpg" }
+  ],
+  "graphql": [
+    { "title": "GraphQL Crash Course", "channel": "The Net Ninja", "durationMinutes": 90, "url": "https://www.youtube.com/watch?v=Y0lDGjwRYKw", "thumbnail": "https://i.ytimg.com/vi/Y0lDGjwRYKw/mqdefault.jpg" },
+    { "title": "GraphQL Full Course", "channel": "freeCodeCamp.org", "durationMinutes": 240, "url": "https://www.youtube.com/watch?v=ed8SzALpx1Q", "thumbnail": "https://i.ytimg.com/vi/ed8SzALpx1Q/mqdefault.jpg" },
+    { "title": "GraphQL in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=eIQh02xuVw4", "thumbnail": "https://i.ytimg.com/vi/eIQh02xuVw4/mqdefault.jpg" }
+  ],
+  "docker": [
+    { "title": "Docker Tutorial for Beginners", "channel": "Programming with Mosh", "durationMinutes": 180, "url": "https://www.youtube.com/watch?v=pTFZFxd4hOI", "thumbnail": "https://i.ytimg.com/vi/pTFZFxd4hOI/mqdefault.jpg" },
+    { "title": "Docker Full Course", "channel": "freeCodeCamp.org", "durationMinutes": 130, "url": "https://www.youtube.com/watch?v=fqMOX6JJhGo", "thumbnail": "https://i.ytimg.com/vi/fqMOX6JJhGo/mqdefault.jpg" },
+    { "title": "Docker in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=Gjnup-PuquQ", "thumbnail": "https://i.ytimg.com/vi/Gjnup-PuquQ/mqdefault.jpg" }
+  ],
+  "cicd": [
+    { "title": "CI/CD with GitHub Actions", "channel": "freeCodeCamp.org", "durationMinutes": 120, "url": "https://www.youtube.com/watch?v=R8_veQiYBjI", "thumbnail": "https://i.ytimg.com/vi/R8_veQiYBjI/mqdefault.jpg" },
+    { "title": "GitHub Actions Tutorial", "channel": "The Net Ninja", "durationMinutes": 60, "url": "https://www.youtube.com/watch?v=R8_veQiYBjI", "thumbnail": "https://i.ytimg.com/vi/R8_veQiYBjI/mqdefault.jpg" },
+    { "title": "CI/CD Explained in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=scEDHsr3APg", "thumbnail": "https://i.ytimg.com/vi/scEDHsr3APg/mqdefault.jpg" }
+  ],
+  "integration_tests": [
+    { "title": "Integration Testing in JS", "channel": "Web Dev Simplified", "durationMinutes": 30, "url": "https://www.youtube.com/watch?v=r9HdJ8P6GQI", "thumbnail": "https://i.ytimg.com/vi/r9HdJ8P6GQI/mqdefault.jpg" },
+    { "title": "Testing Trophy & Test Types", "channel": "Theo - t3.gg", "durationMinutes": 25, "url": "https://www.youtube.com/watch?v=Fha2bVoC8SE", "thumbnail": "https://i.ytimg.com/vi/Fha2bVoC8SE/mqdefault.jpg" },
+    { "title": "Testing in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=2hRoxv-YYDw", "thumbnail": "https://i.ytimg.com/vi/2hRoxv-YYDw/mqdefault.jpg" }
+  ],
+  "system_design": [
+    { "title": "System Design Interview Course", "channel": "ByteByteGo", "durationMinutes": 360, "url": "https://www.youtube.com/watch?v=i7twT3x5yv8", "thumbnail": "https://i.ytimg.com/vi/i7twT3x5yv8/mqdefault.jpg" },
+    { "title": "System Design Concepts", "channel": "Hussein Nasser", "durationMinutes": 180, "url": "https://www.youtube.com/watch?v=quLrc3PbuIw", "thumbnail": "https://i.ytimg.com/vi/quLrc3PbuIw/mqdefault.jpg" },
+    { "title": "System Design Primer", "channel": "freeCodeCamp.org", "durationMinutes": 480, "url": "https://www.youtube.com/watch?v=F2FmTdLtb_4", "thumbnail": "https://i.ytimg.com/vi/F2FmTdLtb_4/mqdefault.jpg" }
+  ],
+  "code_review": [
+    { "title": "How to Do a Code Review", "channel": "Continuous Delivery", "durationMinutes": 15, "url": "https://www.youtube.com/watch?v=a9_0UUUNt-Y", "thumbnail": "https://i.ytimg.com/vi/a9_0UUUNt-Y/mqdefault.jpg" },
+    { "title": "Code Review Best Practices", "channel": "Beyond Code", "durationMinutes": 20, "url": "https://www.youtube.com/watch?v=3pck-NEUapk", "thumbnail": "https://i.ytimg.com/vi/3pck-NEUapk/mqdefault.jpg" },
+    { "title": "Effective Pull Requests", "channel": "Theo - t3.gg", "durationMinutes": 15, "url": "https://www.youtube.com/watch?v=BvFqXOQ4UfA", "thumbnail": "https://i.ytimg.com/vi/BvFqXOQ4UfA/mqdefault.jpg" }
+  ],
+  "redis": [
+    { "title": "Redis Crash Course", "channel": "Traversy Media", "durationMinutes": 30, "url": "https://www.youtube.com/watch?v=Hbt56gFj998", "thumbnail": "https://i.ytimg.com/vi/Hbt56gFj998/mqdefault.jpg" },
+    { "title": "Redis in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=G1rOthIU-uo", "thumbnail": "https://i.ytimg.com/vi/G1rOthIU-uo/mqdefault.jpg" },
+    { "title": "Redis Full Course", "channel": "freeCodeCamp.org", "durationMinutes": 180, "url": "https://www.youtube.com/watch?v=XCsS_NVAa1g", "thumbnail": "https://i.ytimg.com/vi/XCsS_NVAa1g/mqdefault.jpg" }
+  ],
+  "aws": [
+    { "title": "AWS Full Course", "channel": "freeCodeCamp.org", "durationMinutes": 720, "url": "https://www.youtube.com/watch?v=ulprqHHWlng", "thumbnail": "https://i.ytimg.com/vi/ulprqHHWlng/mqdefault.jpg" },
+    { "title": "AWS Cloud Practitioner", "channel": "Stephane Maarek", "durationMinutes": 480, "url": "https://www.youtube.com/watch?v=NhDYbskXRgc", "thumbnail": "https://i.ytimg.com/vi/NhDYbskXRgc/mqdefault.jpg" },
+    { "title": "AWS in 100 Seconds", "channel": "Fireship", "durationMinutes": 2, "url": "https://www.youtube.com/watch?v=a9__D53WsUs", "thumbnail": "https://i.ytimg.com/vi/a9__D53WsUs/mqdefault.jpg" }
+  ],
+  "observability": [
+    { "title": "Observability 101", "channel": "Honeycomb", "durationMinutes": 45, "url": "https://www.youtube.com/watch?v=CAQ_a2-9UOI", "thumbnail": "https://i.ytimg.com/vi/CAQ_a2-9UOI/mqdefault.jpg" },
+    { "title": "Prometheus + Grafana Tutorial", "channel": "TechWorld with Nana", "durationMinutes": 60, "url": "https://www.youtube.com/watch?v=h4Sl21AKiDg", "thumbnail": "https://i.ytimg.com/vi/h4Sl21AKiDg/mqdefault.jpg" },
+    { "title": "OpenTelemetry Explained", "channel": "Hussein Nasser", "durationMinutes": 30, "url": "https://www.youtube.com/watch?v=r8UvWSX3KA8", "thumbnail": "https://i.ytimg.com/vi/r8UvWSX3KA8/mqdefault.jpg" }
+  ],
+  "llm_apis": [
+    { "title": "OpenAI API Crash Course", "channel": "Tech with Tim", "durationMinutes": 45, "url": "https://www.youtube.com/watch?v=cwbXIDIvf4w", "thumbnail": "https://i.ytimg.com/vi/cwbXIDIvf4w/mqdefault.jpg" },
+    { "title": "Build with the OpenAI API", "channel": "freeCodeCamp.org", "durationMinutes": 180, "url": "https://www.youtube.com/watch?v=qGOI8VbpEPI", "thumbnail": "https://i.ytimg.com/vi/qGOI8VbpEPI/mqdefault.jpg" },
+    { "title": "LLM Engineering 101", "channel": "AI Jason", "durationMinutes": 30, "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g", "thumbnail": "https://i.ytimg.com/vi/zjkBMFhNj_g/mqdefault.jpg" }
+  ],
+  "_default": [
+    { "title": "Programming Tutorials Library", "channel": "freeCodeCamp.org", "durationMinutes": 60, "url": "https://www.youtube.com/@freecodecamp", "thumbnail": null },
+    { "title": "Developer Roadmaps & Courses", "channel": "Fireship", "durationMinutes": 10, "url": "https://www.youtube.com/@Fireship", "thumbnail": null }
+  ]
+}
