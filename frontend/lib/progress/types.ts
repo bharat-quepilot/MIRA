@@ -16,9 +16,15 @@ export interface CourseProgress {
   notes: string;
 }
 
+export interface Session {
+  items: CourseProgress[];
+  lastTouchedAt: number;
+}
+
 export interface ProgressState {
   schemaVersion: number;
-  items: CourseProgress[];
+  /** Keyed by computeSessionKey(resume, jd). Each analysis pair has its own bucket. */
+  sessions: Record<string, Session>;
 }
 
 export interface ProgressSnapshot {
@@ -33,5 +39,4 @@ export interface ProgressSnapshot {
   staleItems: CourseProgress[];
   recentlyCompleted: CourseProgress[];
   currentStreak: number;
-  recommendedNext: CourseProgress | null;
 }

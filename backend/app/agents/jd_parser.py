@@ -24,7 +24,10 @@ async def run_jd_parser(
         system_prompt=SYSTEM_PROMPT,
         user_prompt=user_prompt,
         temperature=0.2,
-        timeout_s=12.0,
+        # See resume_parser.py for rationale: 30s catches the slow tail,
+        # no retry since "structured output took 30s" rarely fixes itself.
+        timeout_s=30.0,
+        max_retries=0,
         fallback=fallback,
     )
 

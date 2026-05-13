@@ -7,6 +7,7 @@ import { ToastContainer } from "@/components/ui/ToastContainer";
 import { AnalysisProvider, useAnalysis } from "@/state/AnalysisContext";
 import { ProgressProvider } from "@/state/ProgressContext";
 import { ToastProvider } from "@/state/ToastContext";
+import { WatchHeuristicProvider } from "@/state/WatchHeuristicContext";
 
 function ScreenRouter() {
   const { view } = useAnalysis();
@@ -20,10 +21,12 @@ export default function Home() {
     <ToastProvider>
       <AnalysisProvider>
         <ProgressProvider>
-          <main className="mx-auto max-w-5xl px-6 py-10">
-            <ScreenRouter />
-          </main>
-          <ToastContainer />
+          <WatchHeuristicProvider>
+            <main className="mx-auto max-w-5xl px-6 py-10">
+              <ScreenRouter />
+            </main>
+            <ToastContainer />
+          </WatchHeuristicProvider>
         </ProgressProvider>
       </AnalysisProvider>
     </ToastProvider>

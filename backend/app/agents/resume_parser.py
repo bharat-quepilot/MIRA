@@ -24,7 +24,12 @@ async def run_resume_parser(
         system_prompt=SYSTEM_PROMPT,
         user_prompt=user_prompt,
         temperature=0.2,
-        timeout_s=12.0,
+        # gpt-4o-mini structured outputs are highly variable (7s typical,
+        # 25s+ tail). 30s catches the slow tail; max_retries=0 avoids
+        # wasting another 30s on a doomed second attempt — if the first
+        # call timed out, the model is probably backed up, not buggy.
+        timeout_s=30.0,
+        max_retries=0,
         fallback=fallback,
     )
 

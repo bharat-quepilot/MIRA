@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Bulletproof 16:9 YouTube embed wrapper.
+ *
+ * Why padding-bottom and not `aspect-ratio`:
+ *   `aspect-ratio` can lose to a constrained parent height, leaving the wrapper
+ *   taller than 16:9. The padding-bottom hack derives height from width (a CSS
+ *   quirk where percentage paddings resolve against the parent's *width*),
+ *   so the box is ALWAYS exactly 16:9.
+ *
+ * Why `!important` on the iframe rule:
+ *   `new YT.Player()` stamps `width="640" height="390"` HTML attributes on the
+ *   replaced iframe AND can re-apply them after our onReady runs. Inline styles
+ *   without !important can lose. Important + descendant selector wins reliably.
+ */
+.yt-embed-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 9 / 16 */
+  background: #000;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.yt-embed-wrap > iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;

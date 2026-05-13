@@ -5,7 +5,6 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/primitives/Button";
 import { AlternateCourseCard } from "@/components/ui/AlternateCourseCard";
 import { CourseCard } from "@/components/ui/CourseCard";
-import { NextUpCard } from "@/components/ui/NextUpCard";
 import { SeverityBadge } from "@/components/ui/SeverityBadge";
 import type { EnrichedGap } from "@/lib/schemas/api";
 import { useAnalysis } from "@/state/AnalysisContext";
@@ -19,7 +18,7 @@ export function StudyPlanScreen() {
     if (
       typeof window !== "undefined" &&
       window.confirm(
-        "Wipe all course progress from this browser? This cannot be undone.",
+        "Reset progress for this analysis? (Other analyses are unaffected.)",
       )
     ) {
       reset();
@@ -89,8 +88,6 @@ export function StudyPlanScreen() {
         </div>
       </div>
 
-      <NextUpCard next={snapshot.recommendedNext} />
-
       <div className="space-y-4">
         {allGaps.map((gap) => {
           const primary = gap.courses[0];
@@ -115,7 +112,6 @@ export function StudyPlanScreen() {
                     {gap.skill}
                   </span>
                   <span className="text-xs text-slate-500">
-                    {gap.estimated_hours}h ·{" "}
                     {gap.category === "required" ? "required" : "nice to have"}
                   </span>
                 </span>

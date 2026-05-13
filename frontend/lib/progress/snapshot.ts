@@ -14,17 +14,10 @@ function isCounted(item: CourseProgress): boolean {
   return item.status !== "not_started";
 }
 
-export function computeSnapshot(
-  items: CourseProgress[],
-  visibleCourseIds?: Set<string>,
-): ProgressSnapshot {
-  // Scope to the current analysis when given. Old localStorage entries from
-  // earlier analyses stay in storage (so re-running preserves prior progress),
-  // but they don't pollute the progress bar of *this* view.
-  const inScope = visibleCourseIds
-    ? items.filter((i) => visibleCourseIds.has(i.courseId))
-    : items;
-  const counted = inScope.filter(isCounted);
+export function computeSnapshot(items: CourseProgress[]): ProgressSnapshot {
+  // The caller now passes only items belonging to the current session
+  // (see LocalStorageProgressStore.getSession). No scope-filter needed here.
+  const counted = items.filter(isCounted);
 
   const total = counted.length;
   const completed = counted.filter((i) => i.status === "completed");
@@ -47,16 +40,6 @@ export function computeSnapshot(
     .sort((a, b) => (b.completedAt ?? 0) - (a.completedAt ?? 0))
     .slice(0, 5);
 
-  // Recommend next: prefer required primaries by severity, then nice-to-have primaries.
-  const recommendedNext =
-    [...notStarted]
-      .filter((i) => i.isPrimary)
-      .sort((a, b) => {
-        if (a.gapCategory !== b.gapCategory)
-          return a.gapCategory === "required" ? -1 : 1;
-        return b.gapSeverity - a.gapSeverity;
-      })[0] ?? null;
-
   return {
     totalCourses: total,
     completed: completed.length,
@@ -73,7 +56,6 @@ export function computeSnapshot(
     staleItems,
     recentlyCompleted,
     currentStreak: computeStreak(items), // streak counts ANY touch, primary or alt
-    recommendedNext,
   };
 }
 

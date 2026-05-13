@@ -21,16 +21,22 @@ import type {
   ProgressSnapshot,
 } from "@/lib/progress/types";
 import type { AnalysisResult } from "@/lib/schemas/api";
+import { useAnalysis } from "@/state/AnalysisContext";
 
 interface ProgressCtx {
   items: CourseProgress[];
   snapshot: ProgressSnapshot;
   syncFromAnalysis: (result: AnalysisResult) => void;
   updateStatus: (courseId: string, status: CourseStatus) => void;
+  /** Wipes progress for the current session only. */
   reset: () => void;
+  /** Wipes ALL sessions across all analyses. Use sparingly. */
+  resetAll: () => void;
 }
 
 const Ctx = createContext<ProgressCtx | null>(null);
+
+const EMPTY_ITEMS: CourseProgress[] = [];
 
 export function ProgressProvider({
   store,
@@ -39,53 +45,67 @@ export function ProgressProvider({
   store?: CourseProgressStore;
   children: ReactNode;
 }) {
+  const { sessionKey } = useAnalysis();
+
   const resolvedStore = useMemo(
     () => store ?? new LocalStorageProgressStore(),
     [store],
   );
-  const [items, setItems] = useState<CourseProgress[]>([]);
-  const [visibleCourseIds, setVisibleCourseIds] = useState<Set<string> | null>(
-    null,
-  );
+  const [items, setItems] = useState<CourseProgress[]>(EMPTY_ITEMS);
 
+  // Whenever the session changes (different resume/JD inputs, or first
+  // analysis), reload items for that session's bucket. When there's no
+  // session yet, items must be empty — there's nothing to show progress for.
   useEffect(() => {
-    setItems(resolvedStore.getAll());
-  }, [resolvedStore]);
+    if (sessionKey) {
+      setItems(resolvedStore.getSession(sessionKey));
+    } else {
+      setItems(EMPTY_ITEMS);
+    }
+  }, [sessionKey, resolvedStore]);
 
-  const snapshot = useMemo(
-    () => computeSnapshot(items, visibleCourseIds ?? undefined),
-    [items, visibleCourseIds],
-  );
+  const snapshot = useMemo(() => computeSnapshot(items), [items]);
 
   const syncFromAnalysis = useCallback(
     (result: AnalysisResult) => {
-      const merged = resolvedStore.upsertFromAnalysis(result);
-      setItems(merged);
-      const ids = new Set<string>();
-      for (const g of [...result.required_gaps, ...result.nice_to_have_gaps]) {
-        for (const c of g.courses) ids.add(c.course_id);
-      }
-      setVisibleCourseIds(ids);
+      if (!sessionKey) return; // no inputs yet — caller is racing analyze()
+      const updated = resolvedStore.upsertFromAnalysis(sessionKey, result);
+      setItems(updated);
     },
-    [resolvedStore],
+    [resolvedStore, sessionKey],
   );
 
   const updateStatus = useCallback(
     (courseId: string, status: CourseStatus) => {
-      const updated = resolvedStore.updateStatus(courseId, status);
+      if (!sessionKey) return;
+      const updated = resolvedStore.updateStatus(sessionKey, courseId, status);
       setItems(updated);
     },
-    [resolvedStore],
+    [resolvedStore, sessionKey],
   );
 
   const reset = useCallback(() => {
-    resolvedStore.reset();
-    setItems([]);
-    setVisibleCourseIds(null);
+    if (!sessionKey) return;
+    resolvedStore.resetSession(sessionKey);
+    setItems(EMPTY_ITEMS);
+  }, [resolvedStore, sessionKey]);
+
+  const resetAll = useCallback(() => {
+    resolvedStore.resetAll();
+    setItems(EMPTY_ITEMS);
   }, [resolvedStore]);
 
   return (
-    <Ctx.Provider value={{ items, snapshot, syncFromAnalysis, updateStatus, reset }}>
+    <Ctx.Provider
+      value={{
+        items,
+        snapshot,
+        syncFromAnalysis,
+        updateStatus,
+        reset,
+        resetAll,
+      }}
+    >
       {children}
     </Ctx.Provider>
   );
