@@ -16,14 +16,16 @@ You **don't need an OpenAI key**. Without one, MIRA boots in mock mode and runs 
 
 To make this easy for you to evaluate, I've **committed my own `OPENAI_API_KEY` and `YOUTUBE_API_KEY` to `backend/.env`** so the app runs against the real APIs the moment you `docker-compose up`. I know committing keys is bad practice in a normal project — I'm doing it here purely so you don't have to sign up for anything to see the live pipeline. I'll rotate both keys after the review.
 
-**Please also verify the fallback path** the brief asks about — it's the whole reason the architecture has a deterministic spine. Easiest way:
+**Please also verify the fallback path** the brief asks about — it's the whole reason the architecture has a deterministic spine. Easiest way: open `backend/.env` in your editor, **blank out the two `*_API_KEY` values** so they read `OPENAI_API_KEY=` and `YOUTUBE_API_KEY=`, then restart the backend:
 
 ```bash
-# Empty out the keys, restart, run an analysis again
-echo "OPENAI_API_KEY=" >  backend/.env
-echo "YOUTUBE_API_KEY=" >> backend/.env
+# Docker
 docker-compose restart backend
+
+# or two-terminal — Ctrl+C the uvicorn process, run the start command again
 ```
+
+(If you'd rather use a shell: on bash, `cp backend/.env.example backend/.env` gets you a key-free file in one command. On PowerShell, just edit the file — `echo > .env` writes UTF-16 which `pydantic-settings` won't parse.)
 
 You should see:
 - The orange **"Reduced quality" banner** appear on Results (because every agent fell back to its deterministic path)
@@ -60,7 +62,7 @@ npm install
 npm run dev
 ```
 
-Then click **Use sample data** → **Analyze**. The first cold request takes ~30–45 seconds (real LLM calls); identical follow-up requests hit the in-memory cache and come back in ~15ms. Mock mode is ~20ms either way.
+Then click **Use sample data** → **Analyze**. The first cold request takes around 15–25 seconds (real LLM calls; per-agent timeout is 30s with no retry — fail-fast to the deterministic path). Identical follow-up requests hit the in-memory cache and come back in ~15 ms. Mock mode is ~20 ms either way.
 
 ---
 
@@ -228,6 +230,7 @@ I built deliberately against the five criteria in your brief.
 | YouTube as primary catalog | At the mercy of channel owners (deleted videos, disabled embeds). Static catalog backstops it. |
 | Auto-tracking via IFrame Player | One more loaded script; one more failure mode (embed disabled). Worth it — for ~90% of the catalog the user never clicks Mark Complete. |
 | 80-skill taxonomy as plain JSON | No semantic matching for synonyms beyond what I hand-coded as aliases. Designed an embeddings-based hybrid matcher in the LLD; not yet built. |
+| **Session-partitioned localStorage** (keyed by `hash(resume + jd)`) | Slightly more code in the progress store. Pays for itself the first time a user runs two different analyses — progress can't leak between them, and the same inputs re-analyzed restore your in-flight progress instead of wiping it. Mid-build I shipped a *"reset on every Analyze"* hack to plug the leakage; the proper session-key architecture supersedes that. See [session-key.ts](frontend/lib/progress/session-key.ts). |
 
 ---
 
